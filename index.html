@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>项目截图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #img>li {
+      list-style: none;
+      display: inline;
+    }
+
+    #img>li>img {
+      width: 18%;
+      margin: 1%;
+    }
+
+    #cover {
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+    }
+
+    #b_img {
+      width: 70%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="img">
+
+  </ul>
+  <div id="cover" onclick="closeImg()">
+    <img id="b_img" src="">
+  </div>
+  <script>
+    function closeImg() {
+      document.getElementById("cover").style.display = "none";
+      document.getElementById("b_img").setAttribute("src", '');
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
+    }
+    function showImg(obj) {
+      var img_src = obj.attributes["src"].value;
+      document.getElementById("cover").style.display = "block";
+      document.getElementById("b_img").setAttribute("src", img_src);
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    }
+    function imgList() {
+      var html = '';
+      for (var i = 1; i < 19; i++) {
+        html += `<li><img src="http://oxic6rcr9.bkt.clouddn.com/img__` + i + `.png" onclick="showImg(this)"></li>`;
+      }
+      document.getElementById('img').innerHTML = html;
+    }
+    window.onload=function(){
+      imgList()
+    }
+  </script>
+</body>
+
+</html>
